@@ -22,16 +22,15 @@ def add_order(customer_name, drink, drink_size, extras, price):
 
 
 def get_order(order_id):
-    query = f"SELECT * FROM orders WHERE order_id = {order_id});"
-    run_query(query)
-    return True
+    query = f"SELECT * FROM orders WHERE order_id = {order_id};"
+    result = run_query(query).fetchall()
+    return result
 
 
 def get_all_orders():
     query = f"SELECT * FROM orders"
     result = run_query(query).fetchall()
-    print(f"orders: {result}")
-    return True
+    return result
 
 
 def del_order(order_id):
@@ -48,6 +47,7 @@ def del_all_orders():
 
 def update_order_by_id(order_id, price):
     query = f"UPDATE orders SET price = {price} WHERE order_id = {order_id}"
-    return run_query(query).fetchall()
+    run_query(query)
+    return True
 
 
