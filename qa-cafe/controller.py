@@ -1,4 +1,5 @@
-from CafeConnector import *
+from database_service import *
+from validation import *
 
 def cafe_menu():
     print("""
@@ -19,16 +20,16 @@ def program():
 
     if usr_choice == "1":
         print("You chose 'Add Order.' ")
-        drink = input("Enter drink of choice: ")
-        name = input("Enter your name: ")
-        size = input("Enter size of drink (small, medium,large): ")
-        extras = input("Enter drink extras (milk, cream, choc etc.): ")
+        drink = input_drink()
+        name = input_name()
+        size = input_size()
+        extras = input_extras()
         add_order(name, drink, size, extras, 5.0)
         print(f"Order successful: {drink}, {name}, {size}, {extras}, price: £5")
 
     elif usr_choice == "2":
         print("You chose 'Read Order By ID' ")
-        read_order = input("Please input an order ID: ")
+        read_order = input_id()
         print("You chose order: " + read_order)
         order = get_order(read_order)
         print(str(order))
